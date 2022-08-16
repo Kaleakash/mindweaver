@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <script type="text/JavaScript">
+        function addElements() {
+            var name = document.getElementById("uname").value;
+            var age = document.getElementById("uage").value
+           var pTag = document.createElement("p");          // created p tag 
+           var pTagContent = document.createTextNode("Name is "+name+" Age is "+age);  // content ready 
+           
+           pTag.appendChild(pTagContent);           // added the content in p tag
+           pTag.setAttribute("class","myClass");        // adding the class attribute 
+
+          document.getElementById("out").appendChild(pTag);        // added p tag inside div tag
+          document.getElementById("uname").value="";
+          document.getElementById("uage").value="";
+          
+          //document.getElementsByTagName("body")[0].appendChild(pTag);
+        }
+    </script>
+</head>
+<body>
+    Name :<input type="text" id="uname"/><br/>
+    Age :<input type="number" id="uage"/><br/>
+    <input type="button" value="Add Data" onclick="addElements()"/>
+    <hr/>
+   
+    <div id="out">
+
+    </div>
+</body>
+</html>

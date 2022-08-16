@@ -1,0 +1,7 @@
+package com.service;
+
+import java.io.File;
+
+public class FileOperation {
+	File ff = new File("C:\\Users\\LENOVO\\OneDrive\\Desktop\\Phase 4\\Java Phase 1\\My Files")
+}

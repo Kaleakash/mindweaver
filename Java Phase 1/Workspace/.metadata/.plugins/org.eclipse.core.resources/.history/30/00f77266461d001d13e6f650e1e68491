@@ -1,0 +1,14 @@
+package com.main;
+
+import com.service.FileOperation;
+
+public class DemoTest {
+
+	public static void main(String[] args) {
+		FileOperation fo = new FileOperation();
+		
+		fo.displayAllFileInAscendingOrder();
+
+	}
+
+}

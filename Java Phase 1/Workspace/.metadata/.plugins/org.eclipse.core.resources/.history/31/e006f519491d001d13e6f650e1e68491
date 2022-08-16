@@ -1,0 +1,23 @@
+package com.main;
+
+import java.util.Scanner;
+
+import com.service.FileOperation;
+
+public class DemoTest {
+
+	public static void main(String[] args) {
+		FileOperation fo = new FileOperation();
+		int choice;
+		Scanner obj = new Scanner(System.in);
+		do {
+			System.out.println("1: Display all file in Ascending Order 2: Sub Option 3: Exit");
+			System.out.println("Enter your choice");
+			choice = obj.nextInt();
+			while(choice) {
+				case 1:
+			}
+		} while (condition);
+	}
+
+}

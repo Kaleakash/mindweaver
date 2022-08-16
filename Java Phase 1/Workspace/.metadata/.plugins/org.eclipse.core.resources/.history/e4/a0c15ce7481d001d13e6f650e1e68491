@@ -1,0 +1,18 @@
+package com.main;
+
+import java.util.Scanner;
+
+import com.service.FileOperation;
+
+public class DemoTest {
+
+	public static void main(String[] args) {
+		FileOperation fo = new FileOperation();
+		
+		Scanner obj = new Scanner(System.in);
+		do {
+			System.out.println("1: Display all file in Ascending Order ");
+		} while (condition);
+	}
+
+}

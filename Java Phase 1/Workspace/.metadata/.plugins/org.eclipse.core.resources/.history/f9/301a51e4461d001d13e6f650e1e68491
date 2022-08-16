@@ -1,0 +1,39 @@
+package com.service;
+
+import java.io.File;
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class FileOperation {
+	File ff = new File("C:\\Users\\LENOVO\\OneDrive\\Desktop\\Phase 4\\Java Phase 1\\My Files\\");
+	
+	Scanner obj = new Scanner(System.in);
+	
+	public void displayAllFileInAscendingOrder() {
+			String allFile[]=ff.list();
+			Arrays.sort(allFile);          // all files names sort by asc
+			for(String name:allFile) {
+				System.out.print(name+" ");
+			}
+	}
+	
+	public void addFileName() {
+		int flag=0;
+		System.out.println("Plz enter the file name");
+		String fileName = obj.next();
+		String allFile[]=ff.list();
+		for(String name:allFile) {
+			if(name.equals(fileName)) {
+				flag++;
+				break;
+			}
+		}
+		if(flag>0) {
+			System.out.println("file is present");
+			flag=0;
+		}else {
+			System.out.println("file is not present");
+		}
+	}
+	
+}

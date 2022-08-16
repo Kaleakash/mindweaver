@@ -1,0 +1,64 @@
+package com.service;
+
+import java.io.File;
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class FileOperation {
+	File ff = new File("C:\\Users\\LENOVO\\OneDrive\\Desktop\\Phase 4\\Java Phase 1\\My Files\\");
+	
+	Scanner obj = new Scanner(System.in);
+	
+	public void displayAllFileInAscendingOrder() {
+			String allFile[]=ff.list();
+			Arrays.sort(allFile);          // all files names sort by asc
+			for(String name:allFile) {
+				System.out.print(name+" ");
+			}
+			System.out.println();
+	}
+	
+	public void addFileName() {
+		System.out.println("Plz enter the file name");
+		String fileName = obj.next();
+		ff = new File("C:\\Users\\LENOVO\\OneDrive\\Desktop\\Phase 4\\Java Phase 1\\My Files\\"+fileName);
+		try {
+			if(ff.createNewFile()) {
+				System.out.println("file created...");
+			}else {
+				System.out.println("file already present didn't create");
+			}
+		}catch(Exception e) {
+			
+		}
+	}
+	public void deleteFile() {
+		System.out.println("Plz enter the file name to delete");
+		String fileName = obj.next();
+		ff = new File("C:\\Users\\LENOVO\\OneDrive\\Desktop\\Phase 4\\Java Phase 1\\My Files\\"+fileName);
+		try {
+			if(ff.delete()) {
+				System.out.println("file deleted...");
+			}else {
+				System.out.println("file didn't delete because it is not present");
+			}
+		}catch(Exception e) {
+			
+		}
+	}
+	
+	public void searchFile() {
+		System.out.println("Plz enter the file name to delete");
+		String fileName = obj.next();
+		ff = new File("C:\\Users\\LENOVO\\OneDrive\\Desktop\\Phase 4\\Java Phase 1\\My Files\\"+fileName);
+		try {
+			if(ff.exists()) {
+				System.out.println("file present");
+			}else {
+				System.out.println("file not present");
+			}
+		}catch(Exception e) {
+			
+		}
+	}
+}
