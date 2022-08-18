@@ -9,4 +9,34 @@
     <welcome-file>default.jsp</welcome-file>
     <welcome-file>default.htm</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>AddPlaceDetails</display-name>
+    <servlet-name>AddPlaceDetails</servlet-name>
+    <servlet-class>com.controller.AddPlaceDetails</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddPlaceDetails</servlet-name>
+    <url-pattern>/AddPlaceDetails</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddFlightDetails</display-name>
+    <servlet-name>AddFlightDetails</servlet-name>
+    <servlet-class>com.controller.AddFlightDetails</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddFlightDetails</servlet-name>
+    <url-pattern>/AddFlightDetails</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SearchFlightDetails</display-name>
+    <servlet-name>SearchFlightDetails</servlet-name>
+    <servlet-class>com.controller.SearchFlightDetails</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SearchFlightDetails</servlet-name>
+    <url-pattern>/SearchFlightDetails</url-pattern>
+  </servlet-mapping>
 </web-app>
