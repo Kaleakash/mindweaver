@@ -2,7 +2,6 @@ package com.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.TypedQuery;
@@ -17,19 +16,20 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
+import com.entity.Booking;
 import com.entity.Flight;
 import com.entity.Places;
 
 /**
- * Servlet implementation class SearchFlightDetails
+ * Servlet implementation class BookFlightConfimation
  */
-public class SearchFlightDetails extends HttpServlet {
+public class BookFlightConfimation extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SearchFlightDetails() {
+    public BookFlightConfimation() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -47,30 +47,45 @@ public class SearchFlightDetails extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		//doGet(request, response);
+		
 		PrintWriter pw = response.getWriter();
 		response.setContentType("text/html");
-		LocalDate doj = LocalDate.parse(request.getParameter("doj"));
-		String source = request.getParameter("source");
-		String destination = request.getParameter("destination");
-		int seats = Integer.parseInt(request.getParameter("seats"));
 		
-		RequestDispatcher rd = request.getRequestDispatcher("searchFlight.jsp");
-			
-		
+		int fid = Integer.parseInt(request.getParameter("fid"));
+		int pid = Integer.parseInt(request.getParameter("pid"));
+		String pname = request.getParameter("pname");
+		float totalAmount = Float.parseFloat(request.getParameter("price"));
+		int numberOfSeatch = Integer.parseInt(request.getParameter("numberofseats"));
+		RequestDispatcher rd = request.getRequestDispatcher("searchFlight.jsp");		
 		Configuration con = new Configuration();
 		con.configure("hibernate.cfg.xml");
 		SessionFactory sf = con.buildSessionFactory();
 		Session session = sf.openSession();
-		TypedQuery qry = session.createQuery("select f.flightName,f.price,f.fid,p.pid from Flight f, Places p "
-				+ "where f.dof=:doj and p.source = :source and p.destination = :destination and f.seats >= :seats and p.pid = f.pid");
-		qry.setParameter("doj", doj);
-		qry.setParameter("source", source);
-		qry.setParameter("destination", destination);
-		qry.setParameter("seats", seats);
+		Booking bb = new Booking();
+		bb.setTotalAmount(totalAmount);
+		bb.setPname(pname);
+		bb.setNumberOfSeats(numberOfSeatch);
+		Flight ff = new Flight();
+		ff.setFid(fid);
 		
-		List<Object[]> flightDetails = qry.getResultList();
-		request.setAttribute("flightDetails", flightDetails);
-		request.setAttribute("seats", seats);
+		Places pp = new Places();
+		pp.setPid(pid);
+		
+		bb.setPid(pp);
+		bb.setFid(ff);
+		
+		Flight ff1  = session.get(Flight.class, fid);
+		if(ff1!=null) {
+			Transaction tran = session.getTransaction();
+			tran.begin();
+					session.save(bb);
+						ff1.setSeats(ff1.getSeats()-numberOfSeatch);
+					session.update(ff1);
+			tran.commit();
+			pw.println("Ticket book successfully....");
+		}
+		
 		rd.include(request, response);
 	}
 

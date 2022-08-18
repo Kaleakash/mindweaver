@@ -39,4 +39,24 @@
     <servlet-name>SearchFlightDetails</servlet-name>
     <url-pattern>/SearchFlightDetails</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>BookFlight</display-name>
+    <servlet-name>BookFlight</servlet-name>
+    <servlet-class>com.controller.BookFlight</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BookFlight</servlet-name>
+    <url-pattern>/BookFlight</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>BookFlightConfimation</display-name>
+    <servlet-name>BookFlightConfimation</servlet-name>
+    <servlet-class>com.controller.BookFlightConfimation</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BookFlightConfimation</servlet-name>
+    <url-pattern>/BookFlightConfimation</url-pattern>
+  </servlet-mapping>
 </web-app>

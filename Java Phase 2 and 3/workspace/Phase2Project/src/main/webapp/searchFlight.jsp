@@ -36,7 +36,7 @@ if(obj!= null){
 			while(li.hasNext()){
 				Object o[] = li.next();
 				%>
-				<li>Flight Name <%=o[0] %> Price <%=o[1] %> </li>
+				<li>Flight Name <%=o[0] %> Price <%=o[1] %> <a href="BookFlight?fid=<%=o[2]%>&pid=<%=o[3]%>&seats=<%=request.getAttribute("seats")%>">Book</a></li>
 				<%
 			}
 		}
